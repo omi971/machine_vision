@@ -10,13 +10,19 @@ model = YOLO('../yolo_weights/yolov8n.pt')
 
 while True:
     ret, frame = cap.read()
+    results = model(frame, stream=True)
+    print(results)
+    for r in results:
+        boxes = r.boxes
+        for box in boxes:
+            x1, y1, x2, y2 = box.xyxy[0]
+            x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 255), 3)
+            print(x1, y1, x2, y2)
 
-    results = model(frame, stream=True, show=True)
     cv2.imshow('Webcam Stream', frame)
-    cv2.waitKey(1)
-# cv2.imshow('Image', frame)
-# cv2.waitKey(0)
+    key = cv2.waitKey(1)
+    if key == ord('q'):
+        break
 
-
-# cap.release()
-# cv2.destroyAllWindows()
+cv2.destroyAllWindows()

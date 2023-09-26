@@ -7,6 +7,6 @@ from ultralytics import YOLO
 # cv2.waitKey(5000)
 
 model = YOLO('../yolo_weights/yolov8n.pt')
-results = model('image/3.png', show=True)
+results = model('../image/3.png', show=True)
 
 cv2.waitKey(0)

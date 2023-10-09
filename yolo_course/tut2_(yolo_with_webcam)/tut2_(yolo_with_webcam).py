@@ -11,7 +11,7 @@ cap = cv2.VideoCapture("..\\videos\\cars.mp4")
 cap.set(3, 1280)  # Frame Width
 cap.set(4, 720)  # Frame Height
 
-model = YOLO('../yolo_weights/yolov8n.pt')
+model = YOLO('../yolo_weights/yolov8l.pt')
 
 classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
               "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",

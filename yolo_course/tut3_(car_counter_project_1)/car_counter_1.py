@@ -66,10 +66,9 @@ while True:
             cls = int(box.cls[0])  # index of the classname list
             currentClass = classNames[cls]  # class name
 
-            # if currentClass == "motorbike":
-            #     cvzone.cornerRect(img, (x1, y1, w, h), colorC=(0, 255, 255), colorR=(255, 255, 255), l=15)
-            #     cvzone.putTextRect(img, f"{classNames[cls]} {conf}", (max(0, x1), max(35, y1)), scale=1, thickness=1, offset=3)
-            # if detects car it will name box and show
+            # if currentClass == "motorbike": cvzone.cornerRect(img, (x1, y1, w, h), colorC=(0, 255, 255),
+            # colorR=(255, 255, 255), l=15) cvzone.putTextRect(img, f"{classNames[cls]} {conf}", (max(0, x1), max(35,
+            # y1)), scale=1, thickness=1, offset=3) if detects car it will name box and show
 
             if currentClass == "car" or currentClass == "motorbike" or currentClass == "truck" or currentClass == "bus" and conf > 0.3:
                 cvzone.cornerRect(img, (x1, y1, w, h), colorC=(0, 0, 255), colorR=(255, 255, 255), l=15)
@@ -85,7 +84,7 @@ while True:
     cv2.imshow('Webcam Stream', img)
 
     # Quit window function
-    key = cv2.waitKey(0)
+    key = cv2.waitKey(1)
     if key == ord('q'):
         break
 

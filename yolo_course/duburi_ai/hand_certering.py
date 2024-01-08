@@ -133,16 +133,19 @@ while True:
                     temp = 'Bounding box is inside the rectangle'
                     # print(temp)
                     cv2.putText(img, temp, (100, 35), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+                    cv2.putText(img, 'GO FORWARD', (100, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 5)
                     print('GO FORWARD')
                 elif bb_center_x > bottom_right_x:
                     temp = 'Bounding box is to the right of the rectangle'
                     # print(temp)
                     cv2.putText(img, temp, (100, 35), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+                    cv2.putText(img, "GO LEFT", (100, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 5)
                     print('GO LEFT')
                 elif bb_center_x < top_left_x:
                     temp = 'Bounding box is to the left of the rectangle'
                     # print(temp)
                     cv2.putText(img, temp, (100, 35), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+                    cv2.putText(img, 'GO RIGHT', (100, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 5)
                     print('GO RIGHT')
 
                 # Don't need this (safety er jonno rekhe disi)

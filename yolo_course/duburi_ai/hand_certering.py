@@ -6,7 +6,7 @@ import cvzone
 import math
 import time
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 # cap = cv2.VideoCapture("..\\videos\\cars.mp4")
 cap.set(3, 1280)  # Frame Width
 cap.set(4, 720)  # Frame Height
@@ -22,6 +22,7 @@ fcenter_x = frame_width // 2
 fcenter_y = frame_height // 2
 
 # model = YOLO('../yolo_weights/yolov8n.pt')  # This is light model
+# model = YOLO('../yolo_weights/yolov8s.pt')  # This is light model
 model = YOLO('../yolo_weights/yolov8l.pt')  # This is large model
 
 classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
@@ -99,7 +100,7 @@ while True:
             # cvzone.putTextRect(img, f"{conf}", (max(0, x1), max(35, y1)))  # review again ** max func
 
             # Class Name
-            cls = int(box.cls[0])  # index of the classname list
+            cls = int(box.cls[0])  # index of the class name list
             currentClass = classNames[cls]  # class name
 
             # if currentClass == "motorbike": cvzone.cornerRect(img, (x1, y1, w, h), colorC=(0, 255, 255),
@@ -114,6 +115,11 @@ while True:
                 cvzone.cornerRect(img, (x1, y1, w, h), colorC=(0, 0, 255), colorR=(255, 255, 255), l=15)
                 cvzone.putTextRect(img, f"{classNames[cls]} {conf}", (max(0, x1), max(35, y1)), scale=1, thickness=1,
                                    offset=3)
+
+            # if currentClass in classNames and conf > 0.3:
+            #     cvzone.cornerRect(img, (x1, y1, w, h), colorC=(0, 0, 255), colorR=(255, 255, 255), l=15)
+            #     cvzone.putTextRect(img, f"{classNames[cls]} {conf}", (max(0, x1), max(35, y1)), scale=1, thickness=1,
+            #                        offset=3)
 
                 # find the center of the bounding box
                 bb_center_x = (x1 + x2) // 2
@@ -164,8 +170,8 @@ while True:
     cv2.imshow('Webcam Stream', img)
 
     # Quit window function
-    key = cv2.waitKey(1)
-    if key == ord('q'):
-        break
+    # key = cv2.waitKey(0)
+    # if key == ord('q'):
+    #     break
 
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
